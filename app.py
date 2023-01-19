@@ -1,12 +1,18 @@
 import cv2
 import numpy as np
 import pyautogui
+from datetime import datetime
 
 SCREEN_SIZE = tuple(pyautogui.size())
 
 fourcc = cv2.VideoWriter_fourcc(*"XVID")
 fps = 12.0
-video_output = cv2.VideoWriter("output.avi", fourcc, fps, SCREEN_SIZE)
+date = datetime.now()
+date_str = date.strftime("%d-%m-%Y__%H-%M-%S")
+
+video_filename = f"./videos/{date_str}.avi"
+
+video_output = cv2.VideoWriter(video_filename, fourcc, fps, SCREEN_SIZE)
 record_seconds = 10
 
 Xs = [0,8,6,14,12,4,2,0]
